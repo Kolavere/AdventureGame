@@ -44,6 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseCommand.cs" />
+    <Compile Include="SlapCommand.cs" />
+    <Compile Include="RudeCommand.cs" />
+    <Compile Include="CheerCommand.cs" />
+    <Compile Include="OpenCommand.cs" />
+    <Compile Include="ExamineCommand.cs" />
     <Compile Include="DanceCommand.cs" />
     <Compile Include="EchoCommand.cs" />
     <Compile Include="ICommand.cs" />

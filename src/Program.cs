@@ -13,7 +13,12 @@ namespace Adventure
             commands.Add(new EchoCommand());
             commands.Add(new YellCommand());
             commands.Add(new WaveCommand());
-            commands.Add(new DanceCommand());
+            commands.Add(new SlapCommand());
+            commands.Add(new SlapCommand());
+            commands.Add(new ExamineCommand());
+            commands.Add(new OpenCommand());
+            commands.Add(new CheerCommand());
+            commands.Add(new RudeCommand());
 
             ICommand defaultCommand = new UnknownCommand();
 
