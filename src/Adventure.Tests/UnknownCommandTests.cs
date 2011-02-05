@@ -9,20 +9,20 @@ namespace Adventure.Tests
 {
 
     [TestClass]
-    public class WaveCommandTests
+    public class UnknownCommandTests
     {
         private IConsoleFacade mock;
-        private WaveCommand cmd;
+        private UnknownCommand cmd;
 
         [TestInitialize]
         public void Before_Each_Test()
         {
             mock = MockRepository.GenerateMock<IConsoleFacade>();
-            cmd = new WaveCommand(mock);
+            cmd = new UnknownCommand(mock);
         }
 
         [TestMethod]
-        public void IsValid_Should_Return_False_For_Invalid_String()
+        public void IsValid_Should_Return_True_For_Any_String()
         {
             //Arrange
             
@@ -30,29 +30,18 @@ namespace Adventure.Tests
             var result = cmd.IsValid("Stupid stuff goes here");
 
             //Assert
-            Assert.IsFalse(result);
-        }
-        [TestMethod]
-        public void IsValid_Should_Return_True_For_Valid_String()
-        {
-            //Arrange
-            
-            //Act
-            var result = cmd.IsValid("wave Jimmy");
-
-            //Assert
             Assert.IsTrue(result);
         }
         [TestMethod]
-        public void Execute_Should_Write_To_Console_Wave_Plus_All_But_First_Word()
+        public void Execute_Should_Write_To_Console_Does_Not_Compute()
         {
             //Arrange
            
             //Act
-            cmd.Execute("wave to my friends");
+            cmd.Execute("Stupid stuff goes here");
             
             //Assert
-            mock.AssertWasCalled(m => m.WriteLine("You wave at {0}.", "to my friends"));
+            mock.AssertWasCalled(m => m.WriteLine("Does Not Compute!"));
             
         }
     }

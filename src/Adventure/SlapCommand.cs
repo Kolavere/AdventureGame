@@ -4,7 +4,13 @@ namespace Adventure
 {
     public class SlapCommand : BaseCommand, ICommand
     {
+        private IConsoleFacade console;
 
+        public SlapCommand(IConsoleFacade console)
+        {
+            this.console = console;
+        }
+        
         public bool IsValid(string input)
         {
             return IsFirstWord(input, "slap");
@@ -12,7 +18,7 @@ namespace Adventure
 
         public void Execute(string input)
         {
-           Console.WriteLine(String.Format("You slap {0} upside the head.", GetAllButFirstWord(input)));
+           console.WriteLine("You slap {0} upside the head.", GetAllButFirstWord(input));
         }
     }
 }

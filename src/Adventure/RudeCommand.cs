@@ -4,7 +4,12 @@ namespace Adventure
 {
     public class RudeCommand : BaseCommand, ICommand
     {
-
+        private IConsoleFacade console;
+        
+        public RudeCommand(IConsoleFacade console)
+        {
+            this.console = console;
+        }
         public bool IsValid(string input)
         {
             return IsFirstWord(input, "rude");
@@ -12,7 +17,7 @@ namespace Adventure
 
         public void Execute(string input)
         {
-           Console.WriteLine(String.Format("You make a rude comment to {0}", GetAllButFirstWord(input)));
+           console.WriteLine("You make a rude comment to {0}.", GetAllButFirstWord(input));
         }
     }
 }

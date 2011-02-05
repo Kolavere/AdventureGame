@@ -9,16 +9,16 @@ namespace Adventure.Tests
 {
 
     [TestClass]
-    public class WaveCommandTests
+    public class OpenCommandTests
     {
         private IConsoleFacade mock;
-        private WaveCommand cmd;
+        private OpenCommand cmd;
 
         [TestInitialize]
         public void Before_Each_Test()
         {
             mock = MockRepository.GenerateMock<IConsoleFacade>();
-            cmd = new WaveCommand(mock);
+            cmd = new OpenCommand(mock);
         }
 
         [TestMethod]
@@ -38,21 +38,21 @@ namespace Adventure.Tests
             //Arrange
             
             //Act
-            var result = cmd.IsValid("wave Jimmy");
+            var result = cmd.IsValid("open box");
 
             //Assert
             Assert.IsTrue(result);
         }
         [TestMethod]
-        public void Execute_Should_Write_To_Console_Wave_Plus_All_But_First_Word()
+        public void Execute_Should_Write_To_Console_You_Open_The_Plus_All_But_First_Word_Plus_Ending_Text()
         {
             //Arrange
            
             //Act
-            cmd.Execute("wave to my friends");
+            cmd.Execute("open door");
             
             //Assert
-            mock.AssertWasCalled(m => m.WriteLine("You wave at {0}.", "to my friends"));
+            mock.AssertWasCalled(m => m.WriteLine("You open the {0} and peek at what's inside.", "door"));
             
         }
     }

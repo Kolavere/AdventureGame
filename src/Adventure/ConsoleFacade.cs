@@ -9,5 +9,24 @@ namespace Adventure
         {
             Console.WriteLine(format, arg);
         }
+
+
+        public void ResetColor()
+        {
+            Console.ResetColor();
+        }
+
+
+        public ConsoleColor ForegroundColor
+        {
+            get
+            {
+                return Console.ForegroundColor;
+            }
+            set
+            {
+                Console.ForegroundColor = ForegroundColor;
+            }
+        }
     }
 }

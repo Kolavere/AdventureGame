@@ -4,7 +4,14 @@ namespace Adventure
 {
     public class OpenCommand : BaseCommand, ICommand
     {
+        
+        private IConsoleFacade console;
 
+        public OpenCommand(IConsoleFacade console)
+        {
+            this.console = console;
+        }
+        
         public bool IsValid(string input)
         {
             return IsFirstWord(input, "open");
@@ -12,7 +19,7 @@ namespace Adventure
 
         public void Execute(string input)
         {
-           Console.WriteLine(String.Format("You open the {0} and peek at what's inside.", GetAllButFirstWord(input)));
+           console.WriteLine("You open the {0} and peek at what's inside.", GetAllButFirstWord(input));
         }
     }
 }

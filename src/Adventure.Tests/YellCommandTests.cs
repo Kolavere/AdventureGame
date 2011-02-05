@@ -9,16 +9,16 @@ namespace Adventure.Tests
 {
 
     [TestClass]
-    public class WaveCommandTests
+    public class YellCommandTests
     {
         private IConsoleFacade mock;
-        private WaveCommand cmd;
+        private YellCommand cmd;
 
         [TestInitialize]
         public void Before_Each_Test()
         {
             mock = MockRepository.GenerateMock<IConsoleFacade>();
-            cmd = new WaveCommand(mock);
+            cmd = new YellCommand(mock);
         }
 
         [TestMethod]
@@ -38,21 +38,23 @@ namespace Adventure.Tests
             //Arrange
             
             //Act
-            var result = cmd.IsValid("wave Jimmy");
+            var result = cmd.IsValid("yell Jimmy");
 
             //Assert
             Assert.IsTrue(result);
         }
         [TestMethod]
-        public void Execute_Should_Write_To_Console_Wave_Plus_All_But_First_Word()
+        public void Execute_Should_Write_To_Console_All_But_First_Word_In_Caps_And_Red()
         {
             //Arrange
            
             //Act
-            cmd.Execute("wave to my friends");
+            cmd.Execute("yell idiot");
             
             //Assert
-            mock.AssertWasCalled(m => m.WriteLine("You wave at {0}.", "to my friends"));
+            mock.AssertWasCalled((m => m.ForegroundColor = ConsoleColor.Red));
+                mock.AssertWasCalled(m => m.WriteLine("IDIOT"));
+                    mock.AssertWasCalled(m => m.ResetColor());
             
         }
     }

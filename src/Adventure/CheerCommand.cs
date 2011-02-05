@@ -4,7 +4,13 @@ namespace Adventure
 {
     public class CheerCommand : BaseCommand, ICommand
     {
+        private IConsoleFacade console;
 
+        public CheerCommand(IConsoleFacade console)
+        {
+            this.console = console;
+        }
+        
         public bool IsValid(string input)
         {
             return IsFirstWord(input, "cheer");
@@ -12,7 +18,7 @@ namespace Adventure
 
         public void Execute(string input)
         {
-           Console.WriteLine(String.Format("You cheer for {0}.", GetAllButFirstWord(input)));
+           console.WriteLine("You cheer for {0}.", GetAllButFirstWord(input));
         }
     }
 }

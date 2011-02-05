@@ -5,9 +5,14 @@ using System.Text;
 
 namespace Adventure
 {
-    class UnknownCommand : ICommand
+    public class UnknownCommand : ICommand
     {
-
+        private IConsoleFacade console;
+        
+        public UnknownCommand(IConsoleFacade console)
+        {
+            this.console = console;
+        }
         public bool IsValid(string input)
         {
             return true;
@@ -15,7 +20,7 @@ namespace Adventure
 
         public void Execute(string input)
         {
-            Console.WriteLine("Does not Compute!");
+            console.WriteLine("Does Not Compute!");
         }
 
        

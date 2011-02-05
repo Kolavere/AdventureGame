@@ -9,16 +9,16 @@ namespace Adventure.Tests
 {
 
     [TestClass]
-    public class WaveCommandTests
+    public class SlapCommandTests
     {
         private IConsoleFacade mock;
-        private WaveCommand cmd;
+        private SlapCommand cmd;
 
         [TestInitialize]
         public void Before_Each_Test()
         {
             mock = MockRepository.GenerateMock<IConsoleFacade>();
-            cmd = new WaveCommand(mock);
+            cmd = new SlapCommand(mock);
         }
 
         [TestMethod]
@@ -38,21 +38,21 @@ namespace Adventure.Tests
             //Arrange
             
             //Act
-            var result = cmd.IsValid("wave Jimmy");
+            var result = cmd.IsValid("slap Jimmy");
 
             //Assert
             Assert.IsTrue(result);
         }
         [TestMethod]
-        public void Execute_Should_Write_To_Console_Wave_Plus_All_But_First_Word()
+        public void Execute_Should_Write_To_Console_You_Slap_Plus_All_But_First_Word()
         {
             //Arrange
            
             //Act
-            cmd.Execute("wave to my friends");
+            cmd.Execute("slap myself");
             
             //Assert
-            mock.AssertWasCalled(m => m.WriteLine("You wave at {0}.", "to my friends"));
+            mock.AssertWasCalled(m => m.WriteLine("You slap {0} upside the head.", "myself"));
             
         }
     }

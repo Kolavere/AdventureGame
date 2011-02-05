@@ -5,8 +5,15 @@ using System.Text;
 
 namespace Adventure
 {
-    class EchoCommand : BaseCommand, Adventure.ICommand
+    public class EchoCommand : BaseCommand, ICommand
     {
+        private IConsoleFacade console;
+
+        public EchoCommand(IConsoleFacade console)
+        {
+            this.console = console;
+        }
+        
         public bool IsValid(string input)
         {
             return IsFirstWord(input, "echo");
@@ -14,7 +21,7 @@ namespace Adventure
 
         public void Execute(string input)
         {
-            Console.WriteLine(GetAllButFirstWord(input));
+            console.WriteLine(GetAllButFirstWord(input));
         }
     }
 }

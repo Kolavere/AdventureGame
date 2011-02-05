@@ -48,6 +48,15 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="YellCommandTests.cs" />
+    <Compile Include="EchoCommandTests.cs" />
+    <Compile Include="UnknownCommandTests.cs" />
+    <Compile Include="DanceCommandTests.cs" />
+    <Compile Include="CheerCommandTests.cs" />
+    <Compile Include="ExamineCommandTests.cs" />
+    <Compile Include="OpenCommandTests.cs" />
+    <Compile Include="SlapCommandTests.cs" />
+    <Compile Include="RudeCommandTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WaveCommandTests.cs" />
   </ItemGroup>

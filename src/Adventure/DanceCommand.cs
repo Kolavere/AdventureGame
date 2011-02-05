@@ -4,7 +4,13 @@ namespace Adventure
 {
     public class DanceCommand : BaseCommand, ICommand
     {
+        private IConsoleFacade console;
 
+        public DanceCommand(IConsoleFacade console)
+        {
+            this.console = console;
+        }
+        
         public bool IsValid(string input)
         {
             return IsFirstWord(input, "dance");
@@ -12,7 +18,7 @@ namespace Adventure
 
         public void Execute(string input)
         {
-           Console.WriteLine(String.Format("You gracefully dance the {0}.", GetAllButFirstWord(input)));
+           console.WriteLine("You gracefully dance the {0}.", GetAllButFirstWord(input));
         }
     }
 }
